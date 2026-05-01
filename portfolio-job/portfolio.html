@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sara — Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f5f1ea;
+      --bg-alt: #f0e6da;
+      --card: #ffffff;
+      --accent: #c89a7b;
+      --accent-soft: #f3dfd1;
+      --text-main: #2b2622;
+      --text-muted: #7a6b61;
+      --border: #e0d2c4;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 14px 35px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #f9f4ee 0, #f2e7db 45%, #ebddcf 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 40px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 980px;
+      background: var(--bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border);
+      padding: 28px 26px 30px;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+    }
+
+    .name-block h1 {
+      font-size: 2rem;
+      letter-spacing: 0.03em;
+    }
+
+    .name-block p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    .tagline {
+      max-width: 360px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #fff7f0;
+      border: 1px solid #e7d2c1;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #7fb27f;
+    }
+
+    h2 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    section {
+      margin-bottom: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 14px 14px 12px;
+    }
+
+    .about-text {
+      font-size: 0.92rem;
+      color: var(--text-main);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      font-size: 0.78rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid #e3d3c4;
+      background: #fdf7f2;
+      color: var(--text-muted);
+    }
+
+    .chip-strong {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: #5b3b2a;
+    }
+
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .skills-list span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .skills-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #d2bca7;
+    }
+
+    .skills-dot-strong {
+      background: var(--accent);
+    }
+
+    .project {
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed #e3d3c4;
+    }
+
+    .project:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .project-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .project-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .project-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f8eee4;
+      border: 1px solid #e3d3c4;
+      color: var(--text-muted);
+    }
+
+    .experience-item {
+      margin-bottom: 10px;
+    }
+
+    .experience-role {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .experience-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .experience-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .contact-list {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .contact-list div {
+      margin-bottom: 4px;
+    }
+
+    .contact-list a {
+      color: #8b5a3c;
+      text-decoration: none;
+    }
+
+    .contact-list a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 24px 12px;
+      }
+
+      .page {
+        padding: 22px 16px 20px;
+        border-radius: 14px;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .skills-list {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="name-block">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Open to roles · Internship / Student roles</span>
+        </div>
+        <h1>Sara Haciane</h1>
+        <p>Computing for Business · Dublin City University · Dublin, Ireland</p>
+      </div>
+      <div class="tagline">
+        Computing student with a blend of technical skills, clear communication, and practical problem‑solving.
+        Interested in roles that support students and improve digital experiences.
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Left column -->
+      <div>
+        <section id="about">
+          <h2>About</h2>
+          <div class="card">
+            <p class="about-text">
+              I am a Computing for Business student at DCU with experience in customer‑facing roles and a strong
+              interest in practical, student‑focused solutions. I enjoy making information clear, organising systems,
+              and using technology to make everyday tasks easier. I’m particularly interested in roles that combine
+              communication, organisation, and digital skills, such as website content, events support, and student
+              services.
+            </p>
+            <div class="chips">
+              <span class="chip chip-strong">Seeking: Student roles / Internship</span>
+              <span class="chip">Website &amp; digital content</span>
+              <span class="chip">Events &amp; engagement</span>
+              <span class="chip">Student support / Info Hub</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects">
+          <h2>Selected projects</h2>
+          <div class="card">
+            <div class="project">
+              <div class="project-header">
+                <div class="project-title">Student Task Automation Scripts</div>
+                <div class="project-meta">Bash · Python · Personal</div>
+              </div>
+              <p class="project-desc">
+                A small collection of scripts to automate common student tasks such as organising downloads into
+                folders, backing up notes, and generating simple summaries from text files. Focused on reliability
+                and ease of use.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Automation</span>
+                <span class="project-tag">Shell scripting</span>
+                <span class="project-tag">File organisation</span>
+              </div>
+            </div>
+
+            <div class="project">
+              <div class="project-header">
+                <div class="project-title">Minimal Portfolio Website</div>
+                <div class="project-meta">HTML · CSS</div>
+              </div>
+              <p class="project-desc">
+                A responsive, single‑page portfolio built with clean HTML and CSS. Designed to be fast, readable,
+                and easy to maintain, with a focus on clear structure and accessibility.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Responsive design</span>
+                <span class="project-tag">Accessibility</span>
+                <span class="project-tag">Clean layout</span>
+              </div>
+            </div>
+
+            <div class="project">
+              <div class="project-header">
+                <div class="project-title">Networking Study Cheatsheets</div>
+                <div class="project-meta">Technical writing</div>
+              </div>
+              <p class="project-desc">
+                Concise reference sheets covering core networking concepts (OSI model, IP addressing, routing basics),
+                written to support quick revision and clear understanding for students.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Networking</span>
+                <span class="project-tag">Documentation</span>
+                <span class="project-tag">Student support</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right column -->
+      <div>
+        <section id="skills">
+          <h2>Skills</h2>
+          <div class="card">
+            <div class="skills-list">
+              <span><span class="skills-dot skills-dot-strong"></span> HTML &amp; CSS</span>
+              <span><span class="skills-dot skills-dot-strong"></span> Bash / Shell scripting</span>
+              <span><span class="skills-dot"></span> Python basics</span>
+              <span><span class="skills-dot"></span> Technical writing &amp; documentation</span>
+              <span><span class="skills-dot"></span> Networking fundamentals</span>
+              <span><span class="skills-dot"></span> Customer service &amp; front‑facing roles</span>
+            </div>
+            <div class="chips" style="margin-top:10px;">
+              <span class="chip">Organisation</span>
+              <span class="chip">Clear communication</span>
+              <span class="chip">Problem‑solving</span>
+              <span class="chip">Teamwork</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="experience">
+          <h2>Experience &amp; education</h2>
+          <div class="card">
+            <div class="experience-item">
+              <div class="experience-role">Computing for Business – Student</div>
+              <div class="experience-meta">Dublin City University · 20XX – Present</div>
+              <p class="experience-desc">
+                Studying core modules in programming, networking, databases, and business fundamentals. Regularly work
+                on small projects that combine technical skills with practical, real‑world use cases.
+              </p>
+            </div>
+
+            <div class="experience-item">
+              <div class="experience-role">Customer‑facing &amp; Retail Experience</div>
+              <div class="experience-meta">Various roles · Ongoing</div>
+              <p class="experience-desc">
+                Experience in fast‑paced, front‑facing environments including waiting and shop work. Responsible for
+                handling enquiries, supporting customers, managing cash, and keeping day‑to‑day operations running
+                smoothly.
+              </p>
+            </div>
+
+            <div class="experience-item">
+              <div class="experience-role">Informal Tech Support &amp; Peer Help</div>
+              <div class="experience-meta">Personal / Academic</div>
+              <p class="experience-desc">
+                Help classmates and friends with small tech tasks such as fixing scripts, tidying HTML/CSS, and
+                explaining technical concepts in simple language. Enjoy supporting others and making technology feel
+                more approachable.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact">
+          <h2>Contact</h2>
+          <div class="card">
+            <div class="contact-list">
+              <div><strong>Email:</strong> <a href="mailto:hacianesara79@gmail.com">hacianesara79@gmail.com</a></div>
+              <div><strong>Location:</strong> Dublin, Ireland</div>
+            </div>
+            <div class="footer-note">
+              Available for student roles, internships, and junior opportunities.
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
